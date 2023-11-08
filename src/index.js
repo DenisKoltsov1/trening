@@ -13,27 +13,62 @@ function getRandomIntInclusive(min, max) {
 class Trening extends React.Component{
   constructor(props) {
     super(props);
+    this.state = {};
     this.getRandomIntInclusive = this.getRandomIntInclusive.bind(this);
+    this.renderSwitch = this.renderSwitch.bind(this);
   }
+
+
   text="Тренировка"
-  Jim="отжимания"
 
    getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
-  }
+   
+   }
+   pushUps="Отжимания";
+   squats="Приседание";
+   press="Пресс";
+   reverseExtension="Обратное разгибание";
+   barbell ="Подтягивания";
+   param= this.getRandomIntInclusive(1,5);
+     renderSwitch(){
+
+  
+     
+       
+        switch(this.param) {
+          case 1:
+            return this.pushUps;
+          case 2:
+            return this.squats;
+          case 3:
+            return this.press;
+          case 4:
+            return this.reverseExtension;
+          case 5:
+            return this.barbell;
+          default:
+            return '';
+        }
+        
+      }
+    
+  
       render (){
        
           return( <BrowserRouter>
             <div>
             
-              <h2 class="text-center">{this.text}</h2>
               
-              <h2 class="Jim text-center" >{this.Jim}</h2>
+              <h2 class=" text-center" >{this.renderSwitch()}</h2>
+              <h2>{'количество подходов'}</h2>
+
+              <h1>{this.getRandomIntInclusive(1,5)}</h1>
               <h2>{'количество раз'}</h2>
 
-              <h1>{this.getRandomIntInclusive(0,100)}</h1>
+              <h1>{this.getRandomIntInclusive(10,100)}</h1>
   
           </div> </BrowserRouter> )
          
